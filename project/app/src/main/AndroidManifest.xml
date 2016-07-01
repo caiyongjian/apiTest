@@ -102,6 +102,8 @@
         </activity>
         <activity android:name=".crash.CrashActivity">
         </activity>
+        <activity android:name=".MemoryActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -5,21 +5,18 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import com.qihoo.apitest.crash.CrashActivity;
-import com.qihoo.apitest.hashmap.HashMapTest;
 import com.qihoo.apitest.notification.NotificationTest;
 import com.qihoo.apitest.service.TestService;
 import com.qihoo.apitest.utils.ActivityUtils;
-
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -60,8 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 testAssert();
                 break;
             case R.id.buttonProvider:
-                HashMapTest.performMultiThreadReadTest(5);
-//                testProviderLaunch();
+                testProviderLaunch();
                 break;
             case R.id.buttonService:
                 testServiceLaunch();
@@ -72,9 +68,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.crashTest:
                 testCrash();
                 break;
+            case R.id.MemoryTest:
+                enterMemoryActivity();
             default:
                 break;
         }
+    }
+
+    private void enterMemoryActivity() {
+        startActivity(new Intent(this, MemoryActivity.class));
     }
 
     private void testCrash() {

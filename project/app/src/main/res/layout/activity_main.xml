@@ -58,6 +58,12 @@
             android:text="crasH Test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/MemoryTest"
+            android:text="Memory Test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </RelativeLayout>
