@@ -1,13 +1,22 @@
 package com.qihoo.apitest.crash;
 
+import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.qihoo.apitest.R;
 import com.qihoo.apitest.utils.ActivityUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CrashActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String TAG = "CrashActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +41,63 @@ public class CrashActivity extends AppCompatActivity implements View.OnClickList
                 crashTwoThread();
             }
             break;
+            case R.id.print_all_thread: {
+                printAllThread();
+            }
+            break;
+            case R.id.anr_test: {
+                testANR();
+                break;
+            }
+            case R.id.native_crash_test:
+                testNativeCrash();
+                break;
         }
+    }
+
+    private void testNativeCrash() {
+        NativeCrashHandler.getInstance().testNativeCrash();
+    }
+
+    private void testANR() {
+        sendBroadcast(new Intent(AnrReceiver.ACTION1));
+    }
+
+    private void printAllThread() {
+        printThreadStacks(Thread.getAllStackTraces());
+        Log.i(TAG, "-----------------------------------------------------------------------------");
+        printThreadStacks(getCurrentGroupStack());
+    }
+
+    private void printThreadStacks(Map<Thread, StackTraceElement[]> stacks) {
+        for (Map.Entry<Thread, StackTraceElement[]> entry : stacks.entrySet()) {
+            Thread thread = entry.getKey();
+            StackTraceElement[] stackTraceElements = entry.getValue();
+            String detailStr = String.format("ThreadName:%s, ThreadStack:", thread.getName());
+            for (StackTraceElement element : stackTraceElements) {
+                detailStr += "\t" + element + "\n";
+            }
+
+            Log.i(TAG, detailStr);
+        }
+    }
+
+    private Map<Thread, StackTraceElement[]> getCurrentGroupStack() {
+        ThreadGroup threadGroup = Thread.currentThread().getThreadGroup();
+        Map<Thread, StackTraceElement[]> map = new HashMap<Thread, StackTraceElement[]>();
+
+        // Find out how many live threads we have. Allocate a bit more
+        // space than needed, in case new ones are just being created.
+        int count = threadGroup.activeCount();
+        Thread[] threads = new Thread[count + count / 2];
+
+        // Enumerate the threads and collect the stacktraces.
+        count = threadGroup.enumerate(threads);
+        for (int i = 0; i < count; i++) {
+            map.put(threads[i], threads[i].getStackTrace());
+        }
+
+        return map;
     }
 
     private void crashTwoThread() {

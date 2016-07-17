@@ -31,6 +31,24 @@
             android:text="crash two thread"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/print_all_thread"
+            android:text="all thread stack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/native_crash_test"
+            android:text="native_crash_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/anr_test"
+            android:text="anr_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -3,10 +3,12 @@ package com.qihoo.apitest;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.annotation.StyleRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,7 +18,10 @@ import android.widget.EditText;
 import com.qihoo.apitest.crash.CrashActivity;
 import com.qihoo.apitest.notification.NotificationTest;
 import com.qihoo.apitest.service.TestService;
+import com.qihoo.apitest.settings.SettingsActivity;
 import com.qihoo.apitest.utils.ActivityUtils;
+
+import java.sql.Time;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -70,6 +75,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.MemoryTest:
                 enterMemoryActivity();
+                break;
+            case R.id.system_settings:
+                enterActivity(SettingsActivity.class);
+                break;
             default:
                 break;
         }
@@ -77,6 +86,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void enterMemoryActivity() {
         startActivity(new Intent(this, MemoryActivity.class));
+    }
+    private void enterActivity(Class cls) {
+        startActivity(new Intent(this, cls));
     }
 
     private void testCrash() {
@@ -114,5 +126,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void testAssert() {
         Assert.setEnable(true);
         Assert.assertTrue(!TextUtils.isEmpty(mEditText.getText()), "TETTTTTT");
+    }
+
+    @Override
+    protected void onApplyThemeResource(Resources.Theme theme, int resid, boolean first) {
+        super.onApplyThemeResource(theme, resid, first);
+    }
+
+    @Override
+    public void setTheme(@StyleRes int resid) {
+        super.setTheme(resid);
     }
 }

@@ -10,8 +10,32 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        ndk {
+            moduleName "NativeCrashHandler"
+            stl "gnustl_static"
+            abiFilters 'armeabi-v7a'
+            ldLibs "c"
+            ldLibs "log"
+            ldLibs "android"
+            ldLibs "m"
+            ldLibs "z"
+        }
     }
+
+    sourceSets {
+        main {
+//            jni.srcDirs = []
+            jniLibs.srcDirs = ['src/main/libs']
+
+            jni.srcDirs = ['src/main/jni']
+        }
+    }
+
     buildTypes {
+        debug {
+            jniDebuggable = true
+            debuggable = true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -20,7 +44,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
+//    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
+//    compile 'com.tencent.bugly:crashreport:latest.release'
+//    compile 'com.tencent.bugly:nativecrashreport:latest.release'
 }
