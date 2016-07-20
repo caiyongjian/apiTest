@@ -1,10 +1,10 @@
 package com.qihoo.apitest.settings;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -17,7 +17,7 @@ import com.qihoo.apitest.utils.ActivityUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
+public class SettingsActivity extends Activity implements View.OnClickListener {
     WebView mWebView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

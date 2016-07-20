@@ -12,14 +12,14 @@ public class AnrReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        switch (action) {
-            case ACTION1:
-                try {
-                    Thread.sleep(20000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                break;
-        }
+//        switch (action) {
+//            case ACTION1:
+//                try {
+//                    Thread.sleep(20000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                break;
+//        }
     }
 }

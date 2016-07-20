@@ -123,7 +123,7 @@ public class IteratorTest {
     }
 
     private static Map<Integer, String> prepareHashMap(int capacity) {
-        HashMap<Integer, String> testMap = new HashMap<>(capacity);
+        HashMap<Integer, String> testMap = new HashMap<Integer, String>(capacity);
         for (int i = 0; i < capacity; i++) {
             testMap.put(i, String.format("test_%d", i));
         }
@@ -146,7 +146,7 @@ public class IteratorTest {
     }
 
     private static List<String> prepareArrayList(int capacity) {
-        ArrayList<String> arrayList = new ArrayList<>(capacity);
+        ArrayList<String> arrayList = new ArrayList<String>(capacity);
         for (int i = 0; i < capacity; i++) {
             arrayList.add(String.format("test_%d", i));
         }
@@ -154,7 +154,7 @@ public class IteratorTest {
     }
 
     private static List<String> prepareLinkedList(int capacity) {
-        LinkedList<String> targetList = new LinkedList<>();
+        LinkedList<String> targetList = new LinkedList<String>();
         for (int i = 0; i < capacity; i++) {
             targetList.add(String.format("test_%d", i));
         }

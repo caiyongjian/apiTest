@@ -1,12 +1,12 @@
 package com.qihoo.apitest.activities;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.os.PatternMatcher;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.PatternMatcher;
 import android.util.Log;
 
-public class ExportActivity extends AppCompatActivity {
+public class ExportActivity extends Activity {
 
     private static final String TAG = "ExportActivity";
 

@@ -1,8 +1,7 @@
 package com.qihoo.apitest.crash;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +13,7 @@ import com.qihoo.apitest.utils.ActivityUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CrashActivity extends AppCompatActivity implements View.OnClickListener {
+public class CrashActivity extends Activity implements View.OnClickListener {
 
     private static final String TAG = "CrashActivity";
 

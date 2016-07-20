@@ -1,7 +1,5 @@
 package com.qihoo.apitest.hashmap;
 
-import android.provider.ContactsContract;
-import android.telecom.Call;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -19,7 +17,7 @@ import java.util.concurrent.Future;
 public class HashMapTest {
     private static final String TAG = "HashMapTest";
     private static final int map_count = 50;
-    private static HashMap<String, String> map = new HashMap<>(map_count);
+    private static HashMap<String, String> map = new HashMap<String, String>(map_count);
     static {
         for (int i = 0; i < map_count; i++) {
             String indexStr = String.valueOf(i);
@@ -45,7 +43,7 @@ public class HashMapTest {
     }
     public static void performMultiThreadReadTest(int threadCount) {
         ExecutorService executorService = Executors.newFixedThreadPool(threadCount);
-        ArrayList<ReadTask> tasks = new ArrayList<>(map.size());
+        ArrayList<ReadTask> tasks = new ArrayList<ReadTask>(map.size());
         for (int i = 0; i < map.size(); i++) {
             tasks.add(new ReadTask(i));
         }

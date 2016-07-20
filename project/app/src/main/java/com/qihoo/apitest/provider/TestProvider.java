@@ -4,7 +4,6 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.qihoo.apitest.Global;
@@ -19,21 +18,18 @@ public class TestProvider extends ContentProvider {
         return true;
     }
 
-    @Nullable
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         Log.i(Global.STEP_LOG, "TestProvider.query", new Throwable("printStack"));
         return null;
     }
 
-    @Nullable
     @Override
     public String getType(Uri uri) {
         Log.i(Global.STEP_LOG, "TestProvider.getType");
         return null;
     }
 
-    @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         Log.i(Global.STEP_LOG, "TestProvider.insert");

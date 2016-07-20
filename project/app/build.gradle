@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 19
     buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "com.qihoo.apitest"
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
         ndk {
@@ -26,7 +26,6 @@ android {
         main {
 //            jni.srcDirs = []
             jniLibs.srcDirs = ['src/main/libs']
-
             jni.srcDirs = ['src/main/jni']
         }
     }
@@ -49,7 +48,7 @@ android {
 dependencies {
 //    compile fileTree(dir: 'libs', include: ['*.jar'])
 //    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
+//    compile 'com.android.support:appcompat-v7:23.2.1'
 //    compile 'com.tencent.bugly:crashreport:latest.release'
 //    compile 'com.tencent.bugly:nativecrashreport:latest.release'
 }

@@ -1,6 +1,6 @@
 package com.qihoo.apitest;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -10,7 +10,7 @@ import android.widget.EditText;
 import com.qihoo.apitest.iterator.IteratorTest;
 import com.qihoo.apitest.utils.ActivityUtils;
 
-public class MemoryActivity extends AppCompatActivity implements View.OnClickListener {
+public class MemoryActivity extends Activity implements View.OnClickListener {
 
     private EditText mEdit = null;
     @Override

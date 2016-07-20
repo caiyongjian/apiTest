@@ -7,10 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.AudioManager;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 
 import com.qihoo.apitest.MainActivity;
 import com.qihoo.apitest.R;
@@ -35,28 +32,28 @@ public class NotificationTest {
     }
 
     public void show(String ticker, String title, String text, PendingIntent pi, boolean shock, boolean music, int id) {
-        NotificationManager nm = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext);
-        builder.setSmallIcon(R.drawable.qiangpiao_notification_small_icon)
-                .setTicker(ticker)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setContentIntent(pi)
-                .setAutoCancel(true)
-                .setDefaults(Notification.DEFAULT_LIGHTS);
-
-        if (!("vivo".equalsIgnoreCase(Build.BRAND) && "vivo S11t".equalsIgnoreCase(Build.MODEL))) {
-            Bitmap largeIcon = BitmapFactory.decodeResource(mContext.getResources(),
-                    R.drawable.notification_large_icon);
-            if (largeIcon != null)
-                builder.setLargeIcon(largeIcon);
-        }
-
-        if (shock) builder.setDefaults(Notification.DEFAULT_VIBRATE);
-
-        Notification notification = builder.build();
-        notification.flags |= Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_SHOW_LIGHTS;
-        nm.cancel(id);
-        nm.notify(id, notification);
+//        NotificationManager nm = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext);
+//        builder.setSmallIcon(R.drawable.qiangpiao_notification_small_icon)
+//                .setTicker(ticker)
+//                .setContentTitle(title)
+//                .setContentText(text)
+//                .setContentIntent(pi)
+//                .setAutoCancel(true)
+//                .setDefaults(Notification.DEFAULT_LIGHTS);
+//
+//        if (!("vivo".equalsIgnoreCase(Build.BRAND) && "vivo S11t".equalsIgnoreCase(Build.MODEL))) {
+//            Bitmap largeIcon = BitmapFactory.decodeResource(mContext.getResources(),
+//                    R.drawable.notification_large_icon);
+//            if (largeIcon != null)
+//                builder.setLargeIcon(largeIcon);
+//        }
+//
+//        if (shock) builder.setDefaults(Notification.DEFAULT_VIBRATE);
+//
+//        Notification notification = builder.build();
+//        notification.flags |= Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_SHOW_LIGHTS;
+//        nm.cancel(id);
+//        nm.notify(id, notification);
     }
 }

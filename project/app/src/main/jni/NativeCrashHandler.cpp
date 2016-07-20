@@ -4,9 +4,16 @@
 
 #include <stddef.h>
 #include "com_qihoo_apitest_crash_NativeCrashHandler.h"
-#include "ExceptionHandler.h"
 
-ExceptionHandler* g_ExceptionHandler = NULL;
+#include "client/linux/handler/exception_handler.h"
+
+//ExceptionHandler* g_ExceptionHandler = NULL;
+
+static bool dumpCallback(const google_breakpad::MinidumpDescriptor& descriptor,
+                         void* context, bool succeeded) {
+  printf("Dump path: %s\n", descriptor.path());
+  return succeeded;
+}
 
 JNIEXPORT jint JNICALL Java_com_qihoo_apitest_crash_NativeCrashHandler_getVersion(JNIEnv *env, jobject) {
     return 10000;
@@ -19,6 +26,8 @@ JNIEXPORT jint JNICALL Java_com_qihoo_apitest_crash_NativeCrashHandler_invideCra
 
 JNIEXPORT void JNICALL
 Java_com_qihoo_apitest_crash_NativeCrashHandler_nativeInit(JNIEnv *env, jobject instance) {
-    g_ExceptionHandler = new ExceptionHandler();
-    g_ExceptionHandler->init();
+  google_breakpad::MinidumpDescriptor descriptor("/sdcard/dmp");
+  google_breakpad::ExceptionHandler eh(descriptor, NULL, dumpCallback, NULL, true, -1);
+//    g_ExceptionHandler = new ExceptionHandler();
+//    g_ExceptionHandler->init();
 }

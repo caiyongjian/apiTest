@@ -1,5 +1,6 @@
 package com.qihoo.apitest;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -8,8 +9,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.annotation.StyleRes;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -21,9 +20,8 @@ import com.qihoo.apitest.service.TestService;
 import com.qihoo.apitest.settings.SettingsActivity;
 import com.qihoo.apitest.utils.ActivityUtils;
 
-import java.sql.Time;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends Activity implements View.OnClickListener{
 
     private EditText mEditText;
     IBinder mService;
@@ -134,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void setTheme(@StyleRes int resid) {
+    public void setTheme(int resid) {
         super.setTheme(resid);
     }
 }
