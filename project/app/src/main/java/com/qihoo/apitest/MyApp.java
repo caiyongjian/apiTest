@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.qihoo.apitest.crash.CrashHandler;
 import com.qihoo.apitest.crash.NativeCrashHandler;
-//import com.tencent.bugly.crashreport.CrashReport;
+import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * Created by caiyongjian on 16-6-19.
@@ -16,7 +16,7 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-//        CrashReport.initCrashReport(getApplicationContext(), "900040350", true);
+        CrashReport.initCrashReport(getApplicationContext(), "900040350", true);
         ANRHandler.registerANRReceiver(this);
         try {
             Thread.sleep(300);

@@ -1,11 +1,11 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 19
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.qihoo.apitest"
+//        applicationId "com.qfix.bugfix"
         minSdkVersion 14
         targetSdkVersion 19
         versionCode 1
@@ -24,9 +24,10 @@ android {
 
     sourceSets {
         main {
-            jni.srcDirs = []
+//            jni.srcDirs = []
+            java.srcDirs = ['src/main/java']
             jniLibs.srcDirs = ['src/main/libs']
-//            jni.srcDirs = ['src/main/jni']
+            jni.srcDirs = ['src/main/jni']
         }
     }
 
@@ -49,6 +50,6 @@ dependencies {
 //    compile fileTree(dir: 'libs', include: ['*.jar'])
 //    testCompile 'junit:junit:4.12'
 //    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.tencent.bugly:crashreport:latest.release'
-    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+//    compile 'com.tencent.bugly:crashreport:latest.release'
+//    compile 'com.tencent.bugly:nativecrashreport:latest.release'
 }
