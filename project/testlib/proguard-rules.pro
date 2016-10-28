@@ -16,6 +16,5 @@
 #   public *;
 #}
 
--dontwarn com.tencent.bugly.**
--keep public class com.tencent.bugly.**{*;}
--keep public class com.qfix.testlib.**{*;}
+#-dontwarn com.qfix.testlib.**
+#-keep public class com.qfix.testlib.**{*;}

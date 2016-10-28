@@ -8,6 +8,8 @@ import com.qfix.bugfix.utils.Utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 /**
  * Created by caiyongjian on 16-7-20.
  */
@@ -70,5 +72,11 @@ public class SystemMessage implements MessageSource {
         Utils.sparePrint(jsonObject, TAG_MODEL, mModel);
         Utils.sparePrint(jsonObject, TAG_BRAND, mBrand);
         Utils.sparePrint(jsonObject, TAG_PRODUCT, mProduct);
+    }
+
+    @Override
+    public void getSign(HashMap<String, String> signMaps) {
+        signMaps.put(TAG_MACHINE_ID, mMachineId);
+        signMaps.put(TAG_SDK, getSdkString());
     }
 }

@@ -1,1 +1,5 @@
-include ':app', ':voteapp', ":bugfix"
+include ':app'
+//include ':bugfix'
+include ':testlib'
+
+

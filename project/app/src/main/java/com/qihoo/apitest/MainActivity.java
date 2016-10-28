@@ -11,19 +11,25 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
+import com.qihoo.apitest.butterknife.ButterKnifeActivity;
 import com.qihoo.apitest.crash.CrashActivity;
+import com.qihoo.apitest.dagger.CoffeeApp;
 import com.qihoo.apitest.notification.NotificationTest;
 import com.qihoo.apitest.service.TestService;
 import com.qihoo.apitest.settings.SettingsActivity;
-import com.qihoo.apitest.utils.ActivityUtils;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends Activity {
+    @BindView(R.id.testEdit)
+    protected EditText mEditText;
 
-    private EditText mEditText;
     IBinder mService;
     ServiceConnection mConnect =  new ServiceConnection() {
         @Override
@@ -43,61 +49,47 @@ public class MainActivity extends Activity implements View.OnClickListener{
             mService = null;
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ActivityUtils.installAllButtonListener(this, this);
+        ButterKnife.bind(this);
 
-        mEditText = (EditText)findViewById(R.id.testEdit);
+        CoffeeApp.main(null);
+    }
+
+    @OnClick(R.id.enterButterKnife)
+    protected void onClickEnterButterKnife(Button button) {
+        enterActivity(ButterKnifeActivity.class);
     }
 
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.buttonAssert:
-                testAssert();
-                break;
-            case R.id.buttonProvider:
-                testProviderLaunch();
-                break;
-            case R.id.buttonService:
-                testServiceLaunch();
-                break;
-            case R.id.buttonNotification:
-                testNotication();
-                break;
-            case R.id.crashTest:
-                testCrash();
-                break;
-            case R.id.MemoryTest:
-                enterMemoryActivity();
-                break;
-            case R.id.system_settings:
-                enterActivity(SettingsActivity.class);
-                break;
-            default:
-                break;
-        }
+    @OnClick(R.id.system_settings)
+    protected void enterSettingActivity(Button button) {
+        enterActivity(SettingsActivity.class);
     }
 
-    private void enterMemoryActivity() {
-        startActivity(new Intent(this, MemoryActivity.class));
+    @OnClick(R.id.MemoryTest)
+    protected void enterMemoryActivity(Button button) {
+            startActivity(new Intent(this, MemoryActivity.class));
     }
     private void enterActivity(Class cls) {
         startActivity(new Intent(this, cls));
     }
 
-    private void testCrash() {
+    @OnClick(R.id.crashTest)
+    protected void testCrash(Button button) {
         startActivity(new Intent(this, CrashActivity.class));
     }
 
-    private void testNotication() {
+    @OnClick(R.id.buttonNotification)
+    protected void testNotication(Button button) {
         new NotificationTest(this).doNotify();
     }
 
-    private void testServiceLaunch() {
+    @OnClick(R.id.buttonService)
+    protected void testServiceLaunch(Button button) {
         Intent intent = new Intent(this, TestService.class);
         boolean bindres = getApplicationContext().bindService(intent,
                 new ServiceConnection() {
@@ -115,13 +107,15 @@ public class MainActivity extends Activity implements View.OnClickListener{
         Log.i(Global.STEP_LOG, String.format("testServiceLaunch bind result:%b", bindres));
     }
 
-    private void testProviderLaunch() {
+    @OnClick(R.id.buttonProvider)
+    protected void testProviderLaunch(Button button) {
         Cursor cursor = getContentResolver().query(Uri.parse("content://com.qihoo.apitest.provider.TestProvider/test"),
                 null, null, null, null);
         Log.i(Global.STEP_LOG, "testProviderLaunch", new Throwable("printStack"));
     }
 
-    private void testAssert() {
+    @OnClick(R.id.buttonAssert)
+    protected void testAssert(Button button) {
         Assert.setEnable(true);
         Assert.assertTrue(!TextUtils.isEmpty(mEditText.getText()), "TETTTTTT");
     }

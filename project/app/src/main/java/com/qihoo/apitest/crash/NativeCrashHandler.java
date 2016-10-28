@@ -22,8 +22,8 @@ public class NativeCrashHandler {
     private native int invideCrash(int input);
 
     public void init() {
-        nativeInit();
-        getVersion();
+//        nativeInit();
+//        getVersion();
     }
 
     public void testNativeCrash() {

@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.HashMap;
 
 /**
  * Created by caiyongjian on 16-7-20.
@@ -51,5 +52,9 @@ public class CrashMessage implements MessageSource {
     public void print(JSONObject jsonObject) throws JSONException {
         Utils.sparePrint(jsonObject, TAG_THREAD_NAME, mThreadName);
         Utils.sparePrint(jsonObject, TAG_CRASH_MSG, mCrashMsg);
+    }
+
+    @Override
+    public void getSign(HashMap<String, String> signMaps) {
     }
 }

@@ -2,6 +2,8 @@ package com.qihoo.apitest;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 import com.qihoo.apitest.crash.CrashHandler;
@@ -24,6 +26,8 @@ public class MyApp extends Application {
             e.printStackTrace();
         }
         Log.i(Global.STEP_LOG, "MyApp.onCreate", new Throwable("printStack"));
+        NormalTest.Test();
+        updateDimension(getResources());
     }
 
     @Override
@@ -32,5 +36,13 @@ public class MyApp extends Application {
         CrashHandler.init();
         NativeCrashHandler.getInstance().init();
         Log.i(Global.STEP_LOG, "MyApp.attachBaseContext", new Throwable("printStack"));
+    }
+
+    public final static void updateDimension(Resources resource) {
+        final DisplayMetrics displayMetrics = resource.getDisplayMetrics();
+        float density = displayMetrics.density;
+        int densityDpi = displayMetrics.densityDpi;
+        int widthPixels = displayMetrics.widthPixels;
+        int heightPixels = displayMetrics.heightPixels;
     }
 }
