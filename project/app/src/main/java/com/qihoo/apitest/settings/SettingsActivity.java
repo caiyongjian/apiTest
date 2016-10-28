@@ -4,47 +4,29 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.provider.Settings;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 
 import com.qihoo.apitest.R;
-import com.qihoo.apitest.utils.ActivityUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class SettingsActivity extends Activity implements View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class SettingsActivity extends Activity {
+    @BindView(R.id.targetView)
     WebView mWebView;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-        ActivityUtils.installAllButtonListener(this, this);
 
-        mWebView = (WebView)findViewById(R.id.targetView);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.air_mode_on:
-                turnOnAirMode();
-                break;
-            case R.id.air_mode_off:
-                turnOffAirMode();
-                break;
-            case R.id.do_work:
-                doWork();
-                break;
-        }
-    }
-
-    private static final String BASE_URL = "http://zhounian.lantingroup.cn/index.php/Home/Share/home/id/380.html";
-    private static final String VOTE_URL = "http://zhounian.lantingroup.cn/index.php/Home/Share/addSentiment.html?idm=380";
+    private static final String BASE_URL = "http://www.baidu.com/";
+    private static final String VOTE_URL = "http://news.baidu.com/";
     public static final String HEADER_WAP_PROFILE = "x-wap-profile";
     private boolean mVoted = false;
     WebViewClient mWebViewClient = new WebViewClient() {
@@ -97,13 +79,24 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
             super.onReceivedTouchIconUrl(view, url, precomposed);
         }
     };
-    private void doWork() {
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
+        ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.do_work)
+    protected void doWork(View view) {
         mWebView.setWebChromeClient(mWebChromeClient);
         mWebView.setWebViewClient(mWebViewClient);
         mWebView.loadUrl(BASE_URL);
     }
 
-    private void turnOffAirMode() {
+    @OnClick(R.id.air_mode_off)
+    protected void turnOffAirMode(Button button) {
         ContentResolver cr = getContentResolver();
         if (Settings.System.getString(cr, Settings.Global.AIRPLANE_MODE_ON).equals("1")) {
             Settings.System.putString(cr, Settings.Global.AIRPLANE_MODE_ON, "0");
@@ -112,7 +105,8 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void turnOnAirMode() {
+    @OnClick(R.id.air_mode_on)
+    protected void turnOnAirMode(Button button) {
         ContentResolver cr = getContentResolver();
         if (Settings.System.getString(cr, Settings.Global.AIRPLANE_MODE_ON).equals("0")) {
             Settings.System.putString(cr, Settings.Global.AIRPLANE_MODE_ON, "1");

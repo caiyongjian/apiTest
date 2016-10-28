@@ -16,7 +16,7 @@ import android.widget.EditText;
 
 import com.qihoo.apitest.butterknife.ButterKnifeActivity;
 import com.qihoo.apitest.crash.CrashActivity;
-import com.qihoo.apitest.dagger.CoffeeApp;
+import com.qihoo.apitest.dagger.DaggerActivity;
 import com.qihoo.apitest.notification.NotificationTest;
 import com.qihoo.apitest.service.TestService;
 import com.qihoo.apitest.settings.SettingsActivity;
@@ -55,9 +55,22 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        CoffeeApp.main(null);
     }
+
+    private void enterActivity(Class cls) {
+        startActivity(new Intent(this, cls));
+    }
+
+    @Override
+    protected void onApplyThemeResource(Resources.Theme theme, int resid, boolean first) {
+        super.onApplyThemeResource(theme, resid, first);
+    }
+
+    @Override
+    public void setTheme(int resid) {
+        super.setTheme(resid);
+    }
+
 
     @OnClick(R.id.enterButterKnife)
     protected void onClickEnterButterKnife(Button button) {
@@ -73,9 +86,6 @@ public class MainActivity extends Activity {
     @OnClick(R.id.MemoryTest)
     protected void enterMemoryActivity(Button button) {
             startActivity(new Intent(this, MemoryActivity.class));
-    }
-    private void enterActivity(Class cls) {
-        startActivity(new Intent(this, cls));
     }
 
     @OnClick(R.id.crashTest)
@@ -120,13 +130,8 @@ public class MainActivity extends Activity {
         Assert.assertTrue(!TextUtils.isEmpty(mEditText.getText()), "TETTTTTT");
     }
 
-    @Override
-    protected void onApplyThemeResource(Resources.Theme theme, int resid, boolean first) {
-        super.onApplyThemeResource(theme, resid, first);
-    }
-
-    @Override
-    public void setTheme(int resid) {
-        super.setTheme(resid);
+    @OnClick(R.id.enterDagger)
+    protected void onClickEnterDagger() {
+        enterActivity(DaggerActivity.class);
     }
 }

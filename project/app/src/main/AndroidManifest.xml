@@ -188,6 +188,10 @@
 
         <activity android:name=".butterknife.ButterKnifeActivity">
         </activity>
+        <activity android:name=".dagger.DaggerActivity">
+        </activity>
+        <activity android:name=".dagger.Dagger2Activity">
+        </activity>
     </application>
 
 </manifest>

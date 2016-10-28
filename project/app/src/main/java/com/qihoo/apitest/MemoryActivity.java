@@ -5,33 +5,32 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.qihoo.apitest.iterator.IteratorTest;
-import com.qihoo.apitest.utils.ActivityUtils;
 
-public class MemoryActivity extends Activity implements View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-    private EditText mEdit = null;
+public class MemoryActivity extends Activity {
+
+    @BindView(R.id.testSize)
+    protected EditText mEdit;
+
+    @BindView(R.id.iterator)
+    protected Button mIterator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
-
-        ActivityUtils.installAllButtonListener(this, this);
-        mEdit = (EditText)findViewById(R.id.testSize);
+        ButterKnife.bind(this);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.iterator:
-                testIterator();
-                break;
-        }
-    }
-
-    private void testIterator() {
+    @OnClick(R.id.iterator)
+    protected void testIterator(Button button) {
         Editable editable = mEdit.getText();
         String inputStr = String.valueOf(editable != null ? editable : "200000");
         if (TextUtils.isEmpty(inputStr)) {
@@ -45,13 +44,25 @@ public class MemoryActivity extends Activity implements View.OnClickListener {
         IteratorTest.AsyncTest(new IteratorTest.TestDelegate() {
             @Override
             public void onPreExec() {
-                findViewById(R.id.iterator).setEnabled(false);
+                ButterKnife.apply(mIterator, DISABLE);
             }
 
             @Override
             public void onPostExec() {
-                findViewById(R.id.iterator).setEnabled(true);
+                ButterKnife.apply(mIterator, ENABLED, true);
             }
         }, value);
     }
+
+    static final ButterKnife.Action<View> DISABLE = new ButterKnife.Action<View>() {
+        @Override public void apply(View view, int index) {
+            view.setEnabled(false);
+        }
+    };
+
+    static final ButterKnife.Setter<View, Boolean> ENABLED = new ButterKnife.Setter<View, Boolean>() {
+        @Override public void set(View view, Boolean value, int index) {
+            view.setEnabled(value);
+        }
+    };
 }
