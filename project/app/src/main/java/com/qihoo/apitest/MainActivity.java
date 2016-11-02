@@ -11,9 +11,11 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.qihoo.apitest.activityanim.SingleTaskActivity;
 import com.qihoo.apitest.butterknife.ButterKnifeActivity;
 import com.qihoo.apitest.crash.CrashActivity;
 import com.qihoo.apitest.dagger.DaggerActivity;
@@ -133,5 +135,10 @@ public class MainActivity extends Activity {
     @OnClick(R.id.enterDagger)
     protected void onClickEnterDagger() {
         enterActivity(DaggerActivity.class);
+    }
+
+    @OnClick(R.id.enterActivityAnim)
+    protected void onEnterActivityAnim(View view) {
+        enterActivity(SingleTaskActivity.class);
     }
 }

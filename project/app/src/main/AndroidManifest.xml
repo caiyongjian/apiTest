@@ -192,6 +192,30 @@
         </activity>
         <activity android:name=".dagger.Dagger2Activity">
         </activity>
+        <activity
+            android:name=".activityanim.SingleTaskActivity"
+            android:launchMode="singleTask"
+            android:label="SingleTaskActivity"
+            android:theme="@style/AppSTTheme">
+        </activity>
+        <activity
+            android:name=".activityanim.SingleInstanceActivity"
+            android:launchMode="singleInstance"
+            android:label="SingleInstanceActivity"
+            android:theme="@style/AppSTTheme">
+        </activity>
+        <activity
+            android:name=".activityanim.NormalActivity"
+            android:label="NormalActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppSTTheme">
+        </activity>
+        <activity
+            android:name=".activityanim.SingleTopActivity"
+            android:label="SingleTopActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppSTTheme">
+        </activity>
     </application>
 
 </manifest>

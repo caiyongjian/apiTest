@@ -10,83 +10,95 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.qihoo.apitest.MainActivity">
 
-    <TextView
-        android:id="@+id/textResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textResult"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
-        <EditText
-            android:id="@+id/testEdit"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="1234567890qwertyuiopasdfghjklzxcvbnm"
-            android:hint="input"/>
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/buttonAssert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="assertTest"/>
+            <TextView
+                android:id="@+id/textResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!"/>
 
-        <Button
-            android:id="@+id/buttonService"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="serviceLaunchTest"/>
+            <EditText
+                android:id="@+id/testEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="1234567890qwertyuiopasdfghjklzxcvbnm"
+                android:hint="input"/>
 
-        <Button
-            android:id="@+id/buttonProvider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="providerLaunchTest"/>
+            <Button
+                android:id="@+id/buttonAssert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="assertTest"/>
 
-        <Button
-            android:id="@+id/buttonNotification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="notificationTest"/>
+            <Button
+                android:id="@+id/buttonService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="serviceLaunchTest"/>
 
-        <Button
-            android:id="@+id/crashTest"
-            android:text="crasH Test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/buttonProvider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="providerLaunchTest"/>
 
-        <Button
-            android:id="@+id/MemoryTest"
-            android:text="Memory Test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/system_settings"
-            android:text="System Settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/buttonNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="notificationTest"/>
 
-        <Button
-            android:id="@+id/enter_shortcut"
-            android:text="shortcut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/crashTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="crasH Test"/>
 
-        <Button
-            android:id="@+id/enterButterKnife"
-            android:text="butterKnife"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/MemoryTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Memory Test"/>
 
-        <Button
-            android:id="@+id/enterDagger"
-            android:text="dagger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+            <Button
+                android:id="@+id/system_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="System Settings"/>
+
+            <Button
+                android:id="@+id/enter_shortcut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="shortcut"/>
+
+            <Button
+                android:id="@+id/enterButterKnife"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="butterKnife"/>
+
+            <Button
+                android:id="@+id/enterDagger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dagger"/>
+
+            <Button
+                android:id="@+id/enterActivityAnim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="enterActivityAnim"/>
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
