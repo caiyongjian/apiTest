@@ -194,14 +194,14 @@
         </activity>
         <activity
             android:name=".activityanim.SingleTaskActivity"
-            android:launchMode="singleTask"
             android:label="SingleTaskActivity"
+            android:launchMode="singleTask"
             android:theme="@style/AppSTTheme">
         </activity>
         <activity
             android:name=".activityanim.SingleInstanceActivity"
-            android:launchMode="singleInstance"
             android:label="SingleInstanceActivity"
+            android:launchMode="singleInstance"
             android:theme="@style/AppSTTheme">
         </activity>
         <activity
@@ -215,6 +215,10 @@
             android:label="SingleTopActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppSTTheme">
+        </activity>
+        <activity android:name=".retrofit.RetrofitActivity">
+        </activity>
+        <activity android:name=".greendao.GreenDaoActivity">
         </activity>
     </application>
 

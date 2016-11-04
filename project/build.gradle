@@ -11,6 +11,8 @@ buildscript {
         // in the individual module build.gradle files
 
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.0'
     }
 }
 

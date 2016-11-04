@@ -19,7 +19,6 @@ public class Dagger2Activity extends Activity {
 
         DaggerCoffee.getInstance().inject(this);
 
-
         if (mThemeMode.isNight()) {
             Toast.makeText(this, "isNight", Toast.LENGTH_LONG).show();
         }

@@ -20,6 +20,7 @@ import com.qihoo.apitest.butterknife.ButterKnifeActivity;
 import com.qihoo.apitest.crash.CrashActivity;
 import com.qihoo.apitest.dagger.DaggerActivity;
 import com.qihoo.apitest.notification.NotificationTest;
+import com.qihoo.apitest.retrofit.RetrofitActivity;
 import com.qihoo.apitest.service.TestService;
 import com.qihoo.apitest.settings.SettingsActivity;
 
@@ -140,5 +141,10 @@ public class MainActivity extends Activity {
     @OnClick(R.id.enterActivityAnim)
     protected void onEnterActivityAnim(View view) {
         enterActivity(SingleTaskActivity.class);
+    }
+
+    @OnClick(R.id.enterRetrofit)
+    protected void onEnterRetrofit() {
+        enterActivity(RetrofitActivity.class);
     }
 }

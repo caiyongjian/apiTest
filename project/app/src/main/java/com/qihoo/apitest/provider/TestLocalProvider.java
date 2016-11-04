@@ -14,7 +14,7 @@ import com.qihoo.apitest.Global;
 public class TestLocalProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
-        Log.i(Global.STEP_LOG, "TestLocalProvider.onCreate", new Throwable("printStack"));
+//        Log.i(Global.STEP_LOG, "TestLocalProvider.onCreate", new Throwable("printStack"));
         return true;
     }
 
